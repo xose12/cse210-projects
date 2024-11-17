@@ -150,7 +150,7 @@ public class Program
     {
         Console.Write("Enter the filename to load the journal: ");
         string filename = Console.ReadLine();
-        journal.LoadFromFile(filename);
+        journal.LoadFromFile(filename); // Fixed this line
     }
 
     static string GetRandomPrompt()
