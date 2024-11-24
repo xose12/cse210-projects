@@ -1,20 +1,22 @@
-using System;
-
+// Entry.cs
 public class Entry
 {
-    public string Prompt { get; set; }
-    public string Response { get; set; }
-    public DateTime Date { get; set; }
+    public string Date { get; set; }
+    public string Scripture { get; set; }
+    public string Reflection { get; set; }
 
-    public Entry(string prompt, string response)
+    public Entry(string date, string scripture, string reflection)
     {
-        Prompt = prompt;
-        Response = response;
-        Date = DateTime.Now;  // Automatically sets the current date and time
+        Date = date;
+        Scripture = scripture;
+        Reflection = reflection;
     }
 
-    public override string ToString()
+    public void DisplayEntry()
     {
-        return $"{Date.ToString("yyyy-MM-dd HH:mm:ss")} - {Prompt}\n{Response}";
+        Console.WriteLine($"Date: {Date}");
+        Console.WriteLine($"Scripture: {Scripture}");
+        Console.WriteLine($"Reflection: {Reflection}");
+        Console.WriteLine();
     }
 }
