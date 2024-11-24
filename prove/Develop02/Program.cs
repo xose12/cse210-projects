@@ -1,4 +1,3 @@
-// Program.cs
 using System;
 
 class Program
@@ -6,12 +5,50 @@ class Program
     static void Main(string[] args)
     {
         Journal journal = new Journal();
+        bool exit = false;
 
-        // Add some entries to the journal
-        journal.AddEntry(new Entry("2024-11-23", "John 3:16", "God’s love is everlasting."));
-        journal.AddEntry(new Entry("2024-11-22", "Psalm 23:1", "The Lord is my shepherd."));
+        while (!exit)
+        {
+            Console.WriteLine("\nJournal Menu:");
+            Console.WriteLine("1. Add New Entry");
+            Console.WriteLine("2. Display All Entries");
+            Console.WriteLine("3. Exit");
+            Console.Write("Select an option (1-3): ");
 
-        // Display the journal entries
-        journal.DisplayJournal();
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    // Add new journal entry
+                    Console.Write("Enter the date (YYYY-MM-DD): ");
+                    string date = Console.ReadLine();
+
+                    Console.Write("Enter the scripture reference (e.g., John 3:16): ");
+                    string scripture = Console.ReadLine();
+
+                    Console.Write("Enter your reflection: ");
+                    string reflection = Console.ReadLine();
+
+                    journal.AddEntry(new Entry(date, scripture, reflection));
+                    Console.WriteLine("Journal entry added!");
+                    break;
+
+                case "2":
+                    // Display all entries
+                    journal.DisplayEntries();
+                    break;
+
+                case "3":
+                    // Exit the program
+                    exit = true;
+                    Console.WriteLine("Exiting the program. Goodbye!");
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid choice. Please select a valid option.");
+                    break;
+            }
+        }
     }
 }

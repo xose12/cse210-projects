@@ -1,26 +1,34 @@
-// Journal.cs
 using System;
 using System.Collections.Generic;
 
 public class Journal
 {
-    public List<Entry> Entries { get; set; }
+    private List<Entry> entries;
 
     public Journal()
     {
-        Entries = new List<Entry>();
+        entries = new List<Entry>();
     }
 
     public void AddEntry(Entry entry)
     {
-        Entries.Add(entry);
+        entries.Add(entry);
     }
 
-    public void DisplayJournal()
+    public void DisplayEntries()
     {
-        foreach (Entry entry in Entries)
+        if (entries.Count == 0)
         {
-            entry.DisplayEntry();
+            Console.WriteLine("No journal entries found.");
+        }
+        else
+        {
+            foreach (Entry entry in entries)
+            {
+                Console.WriteLine($"Date: {entry.Date}");
+                Console.WriteLine($"Scripture: {entry.Scripture}");
+                Console.WriteLine($"Reflection: {entry.Reflection}\n");
+            }
         }
     }
 }
